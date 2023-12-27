@@ -64,7 +64,7 @@ const images = [
   },
 ];
 
-// 3 - Розмітка елементів галереї.
+// Розмітка елементів галереї
 
 const gallery = document.querySelector(".gallery");
 gallery.innerHTML = createMarkup(images);
@@ -87,8 +87,7 @@ function createMarkup(arr) {
     .join("");
 }
 
-// 5 - Делегування
-// Саме час додати функціонал прослуховування кліка по елементах галереї та отримання посилання на велике зображення при кліку. Для цього використовуй прийом делегування на ul.gallery. Поки що при кліку на елемент галереї виводь у консоль посилання на велике зображення.
+// Делегування події
 
 gallery.addEventListener("click", handleImageClick);
 
@@ -100,6 +99,8 @@ function handleImageClick(event) {
 
   const dataSource = event.target.dataset.source;
   // console.log(dataSource);
+
+  // Відкриття великого зображення за допомогою біліотеки
 
   const instance = basicLightbox.create(
     `<img src="${dataSource}" width="1112" height="640">`,
@@ -113,6 +114,9 @@ function handleImageClick(event) {
     }
   );
   instance.show();
+
+  // Функція для закриття модального вікна за допомогою Esc
+
   function closeEscModal(event) {
     if (event.code === "Escape") {
       instance.close();
